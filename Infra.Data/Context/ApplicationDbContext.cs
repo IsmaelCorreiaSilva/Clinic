@@ -9,6 +9,7 @@ namespace Infra.Data.Context
     public class ApplicationDbContext: DbContext
     {
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Specialty> Specialties { get; set; }
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
@@ -17,6 +18,7 @@ namespace Infra.Data.Context
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new DoctorMap());
+            modelBuilder.ApplyConfiguration(new SpecialtyMap());
         }
     }
 }

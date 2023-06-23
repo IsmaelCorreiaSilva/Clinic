@@ -13,9 +13,11 @@ namespace Infra.Data.IoC.Configuration
         {
             //Repositories
             services.AddScoped<IDoctorRepository, DoctorRepository>();
+            services.AddScoped<ISpecialtyRepository, SpecialtyRepository>();
 
             //Services
             services.AddScoped<IDoctorService, DoctorService>();
+            services.AddScoped<ISpecialtyService, SpecialtyService>();
 
         }
     }

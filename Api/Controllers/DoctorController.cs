@@ -30,23 +30,22 @@ namespace Api.Controllers
 
         // POST api/<DoctorController>
         [HttpPost]
-        public async Task<ActionResult> Post(DoctorCreate doctor)
+        public async Task<ActionResult> Post(DoctorCreate newDoctor)
         {
-            var newDoctor = await serviceDoctor.Insert(doctor);
-            return CreatedAtAction(nameof(Get),new { newDoctor.Id},newDoctor);
+            var doctor = await serviceDoctor.Insert(newDoctor);
+            return CreatedAtAction(nameof(Get),new { doctor.Id}, doctor);
         }
 
         // PUT api/<DoctorController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(DoctorResponse editDoctor)
+        public async Task<ActionResult> Put(DoctorResponse updateDoctor)
         {
-            var doctorUpdated = await serviceDoctor.Update(editDoctor);
+            var doctor = await serviceDoctor.Update(updateDoctor);
 
-            if (doctorUpdated == null)
+            if (doctor == null)
                 return NotFound();
 
-            return Ok(doctorUpdated);
-
+            return Ok(doctor);
         }
 
         // DELETE api/<DoctorController>/5
